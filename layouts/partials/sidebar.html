@@ -21,4 +21,6 @@
       {{ partial "menu.html" (dict "menu" .Site.Menus.misc "root" $) }}
     </ul>
   </div>
+
+  {{ partial "i18n-lang-picker.html" . }}
 </nav>

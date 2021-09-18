@@ -1,0 +1,11 @@
+<div class="d-flex sidebar-lang-picker-container justify-center align-center">
+    <div class="d-flex">
+        <div id="sidebar-lang-picker-flags-container">
+            {{ range .AllTranslations }}
+            <a href="{{ .Permalink }}">
+                <img src="/images/i18n/{{ .Language }}.svg" alt="{{ .Language }}" title="{{ .Language }}">
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</div>

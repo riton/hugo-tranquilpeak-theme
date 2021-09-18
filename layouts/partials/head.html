@@ -33,6 +33,13 @@
     {{ with .OutputFormats.Get "RSS" }}
       <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ .RelPermalink }}">
     {{ end }}
+    {{/* Provide alternate versions of the same page by following Google best practises: https://developers.google.com/search/docs/advanced/crawling/localized-versions?hl=en */}}
+    {{ range .AllTranslations }}
+      <link rel="alternate" hreflang="{{ .Language }}" href="{{ .Permalink }}">
+      {{ if eq (.Language | string) ($.Site.Language | string) }}
+      <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+      {{ end }}
+    {{ end }}
 
     {{ with .Site.Author.googleplus }}
       <link rel="publisher" href="https://plus.google.com/{{ . | urlize }}">

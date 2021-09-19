@@ -66,10 +66,13 @@
     {{ end }}
     {{ if eq .Section "posts" }}{{ partial "post/page-bundle-css.html" . }}{{ end }}
 
-    {{ if or .Params.googleAnalytics.async .Params.ga.async }}
-      {{ template "_internal/google_analytics_async.html" . }}
-    {{ else }}
-      {{ template "_internal/google_analytics.html" . }}
+    {{ if not .Site.IsServer }}
+    {{/* Only serve google analytics and cookie stuff on production build */}}
+      {{ if or .Params.googleAnalytics.async .Params.ga.async }}
+        {{ template "_internal/google_analytics_async.html" . }}
+      {{ else }}
+        {{ template "_internal/google_analytics.html" . }}
+      {{ end }}
     {{ end }}
     {{ partial "head_end.html" . }}
   </head>

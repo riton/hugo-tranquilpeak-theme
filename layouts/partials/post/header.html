@@ -6,7 +6,7 @@
       </a>
     </h1>
   {{ else }}
-    <h1 class="post-title"{{ if $.Params.titleFontColor }} style="color:{{ $.Params.titleFontColor | safeCSS }};{{ if $.Params.titleTextShadow }} text-shadow:{{ $.Params.titleTextShadow | safeCSS }}{{ end }}"{{ end }}>
+    <h1 class="post-title {{ range $.Params.titleClasses }}{{ . }} {{ end }}">
       {{ $.Title }}
     </h1>
   {{ end }}

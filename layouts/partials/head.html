@@ -64,6 +64,7 @@
         <link rel="stylesheet" href="{{ . | absURL }}">
       {{ end }}
     {{ end }}
+    {{ if eq .Section "posts" }}{{ partial "post/page-bundle-css.html" . }}{{ end }}
 
     {{ if or .Params.googleAnalytics.async .Params.ga.async }}
       {{ template "_internal/google_analytics_async.html" . }}
